@@ -16,6 +16,7 @@ pipeline {
                     -f "ALL" 
                     --prettyPrint''', odcInstallation: 'SCA: Dependency-Check'
                 dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+            }
         stage('Test') {
             steps {
                 echo 'Testing..'
