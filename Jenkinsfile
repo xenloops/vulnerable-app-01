@@ -9,11 +9,12 @@ pipeline {
         }
         stage ('SCA') {
             steps {
+                echo '*** Checking dependencies...'
                 dependencyCheck additionalArguments: ''' 
                     -o "./" 
                     -s "./"
                     -f "ALL" 
-                    --prettyPrint''', odcInstallation: 'OWASP-DC'
+                    --prettyPrint''', odcInstallation: 'SCA: Dependency-Check'
                 dependencyCheckPublisher pattern: 'dependency-check-report.xml'
         stage('Test') {
             steps {
